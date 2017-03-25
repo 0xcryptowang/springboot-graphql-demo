@@ -1,0 +1,69 @@
+server:
+  port: ${{SERVER_PORT}:4190}
+
+management:
+  port: ${{MANAGEMENT_PORT}:4191}
+
+endpoints:
+  health:
+    sensitive: false
+  shutdown:
+    sensitive: true
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+
+  client:
+    serviceUrl:
+      defaultZone:  http://winstar:123456@192.168.118.114:9090/eureka,http://winstar:123456@192.168.118.114:9080/eureka,http://winstar:123456@192.168.118.114:9070/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+spring:
+  data:
+    mongodb:
+      host: ${{MONGO_HOST}:mongodb.winstar.com}
+      port: ${{MONGO_PORT}:27017}
+      uri: ${{MONGO_URI}:mongodb://mongodb.winstar.com/illegals}
+
+logging:
+  path: logs
+  file: springboot-graphql-demo.log
+
+---
+spring:
+  profiles: online
+  data:
+    mongodb:
+      host: ${{MONGO_HOST}:mgdb.proxy.wsd.com}
+      port: ${{MONGO_PORT}:27017}
+      uri: ${{MONGO_URI}:mongodb://mgdb.proxy.wsd.com/illegals}
+
+server:
+  port: ${{SERVER_PORT}:4190}
+
+management:
+  port: ${{MANAGEMENT_PORT}:4191}
+
+endpoints:
+  health:
+    sensitive: false
+  shutdown:
+    sensitive: true
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_LIST}
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+
+logging:
+  path: logs
+  file: springboot-graphql-demo.log

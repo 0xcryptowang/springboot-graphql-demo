@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: springboot-graphql-demo
+
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+    author: gradle
+    telphone: 18700861981
+    email: wanghao187@gmail.com
+    qq: 1176069533
