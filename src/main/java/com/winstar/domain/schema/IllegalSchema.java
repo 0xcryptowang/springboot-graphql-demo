@@ -17,35 +17,31 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.winstar.schema.objecttype;
+package com.winstar.domain.schema;
 
-import com.oembedler.moon.graphql.engine.relay.RelayNode;
 import com.oembedler.moon.graphql.engine.stereotype.*;
-import com.winstar.schema.TodoSchema;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.winstar.domain.objecttype.*;
 
-/**
- * @author <a href="mailto:java.lang.RuntimeException@gmail.com">oEmbedler Inc.</a>
- */
-@GraphQLObject("Root")
-public class RootObjectType {
+@GraphQLSchema
+public class IllegalSchema {
 
-    @GraphQLNonNull
-    @GraphQLField("version")
-    @GraphQLDescription("Root query version number")
-    public static final String VERSION = "0.9.0.2";
+    @GraphQLSchemaQuery
+    private RootObjectType root;
 
-    @Autowired
-    @GraphQLIgnore
-    private TodoSchema todoSchema;
-
-    @GraphQLField
-    public UserObjectType viewer() {
-        return todoSchema.getTheOnlyUser();
+    @GraphQLMutation
+    @GraphQLOut("talk")
+    public Talk changeTimeslot(@GraphQLIn("TimeSlotInput") TimeslotInput input) {
+        Talk talk = StaticData.talks.get(input.getTalkId());
+        talk.setTimeslot(input.getTimeslot());
+        return talk;
     }
 
-    @GraphQLField
-    public RelayNode node(@GraphQLID @GraphQLNonNull @GraphQLIn("id") final String id) {
-        return new UserObjectType();
+    @GraphQLMutation
+    @GraphQLOut("token")
+    public String login(@GraphQLIn("LoginInput") LoginInput input) {
+        //authorization logic
+        return "token";
     }
+
+
 }
