@@ -24,13 +24,9 @@ eureka:
 spring:
   data:
     mongodb:
-      host: ${{MONGO_HOST}:mongodb.winstar.com}
-      port: ${{MONGO_PORT}:27017}
-      uri: ${{MONGO_URI}:mongodb://mongodb.winstar.com/illegals}
-
-logging:
-  path: logs
-  file: springboot-graphql-demo.log
+      host: mongodb.winstar.com
+      port: 27017
+      database: illegals
 
 ---
 spring:
@@ -39,7 +35,7 @@ spring:
     mongodb:
       host: ${{MONGO_HOST}:mgdb.proxy.wsd.com}
       port: ${{MONGO_PORT}:27017}
-      uri: ${{MONGO_URI}:mongodb://mgdb.proxy.wsd.com/illegals}
+      database: ${{MONGO_DATABASE}:illegals}
 
 server:
   port: ${{SERVER_PORT}:4190}
@@ -64,6 +60,3 @@ eureka:
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     hostname: ${spring.cloud.client.ipAddress}
 
-logging:
-  path: logs
-  file: springboot-graphql-demo.log

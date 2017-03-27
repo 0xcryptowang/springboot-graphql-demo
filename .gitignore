@@ -47,3 +47,4 @@ fabric.properties
 target
 *.iml
 *.log
+*.pid

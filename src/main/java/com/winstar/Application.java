@@ -3,6 +3,7 @@ package com.winstar;
 import com.oembedler.moon.graphql.boot.EnableGraphQLServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.system.ApplicationPidFileWriter;
 
 /**
  * application
@@ -13,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication application = new SpringApplication(Application.class);
+        application.addListeners(new ApplicationPidFileWriter("pid/springboot-graphql-demo.pid"));
+        application.run(args);
     }
 }
