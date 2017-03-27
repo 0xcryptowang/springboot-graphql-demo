@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
+        <version>1.4.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -23,15 +23,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.embedler.moon.graphql.boot.starter</groupId>
-            <artifactId>graphql-spring-boot-starter</artifactId>
-            <version>2.1.0-2016-04-29T09-27-45</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>com.embedler.moon.graphql.boot.autoconfigure</artifactId>
-                    <groupId>graphql-spring-boot-autoconfigure</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.embedler.moon.graphql</groupId>
+            <artifactId>spring-graphql-common</artifactId>
+            <version>2.1.0-2016-05-22T16-50-32</version>
         </dependency>
 
         <dependency>
@@ -47,9 +46,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.embedler.moon.graphql</groupId>
-            <artifactId>spring-graphql-common</artifactId>
-            <version>2.1.0-2016-05-22T16-50-32</version>
+            <groupId>com.embedler.moon.graphql.boot.starter</groupId>
+            <artifactId>graphql-spring-boot-starter</artifactId>
+            <version>2.1.0-2016-04-29T09-27-45</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>com.embedler.moon.graphql.boot.autoconfigure</artifactId>
+                    <groupId>graphql-spring-boot-autoconfigure</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -195,14 +200,14 @@
             </snapshots>
             <id>public</id>
             <name>Public Repositories</name>
-            <url>http://dl.bintray.com/merapar/maven</url>
+            <url>http://dl.bintray.com/oembedler/maven</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>public</id>
             <name>Public Repositories</name>
-            <url>http://dl.bintray.com/merapar/maven</url>
+            <url>http://dl.bintray.com/oembedler/maven</url>
         </pluginRepository>
     </pluginRepositories>
 </project>
