@@ -46,3 +46,4 @@ fabric.properties
 .idea/
 target
 *.iml
+*.log
